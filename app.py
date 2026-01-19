@@ -39,7 +39,7 @@ html, body, [class*="css"] {
 
 /* SIDEBAR LABEL TEXT (SLIDERS, INPUTS, SELECTBOXES) */
 [data-testid="stSidebar"] label {
-    color: #ffffff !important;
+    color: 38bdf8 !important;
     font-weight: 500;
 }
 
