@@ -1,5 +1,9 @@
 # 🎯 Nexus Tech: Predictive Retention Engine (Enterprise Edition)
 
+**Screenshot**
+
+![Dashboard Screenshot](dashboard_screenshot.png)
+
 ## 📌 The Mission
 In modern commerce, data is only as good as the action it inspires. This specialized CRM tool transforms raw transactional logs into a **Futuristic Decision Center**. It moves beyond descriptive charts into **Prescriptive Analytics**, offering an AI-driven "Action Center" to save at-risk revenue.
 
