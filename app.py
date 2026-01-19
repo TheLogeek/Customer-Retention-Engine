@@ -3,14 +3,14 @@ import pandas as pd
 import plotly.express as px
 import numpy as np
 
-# ===================== PAGE CONFIG =====================
+# Page Config
 st.set_page_config(
     page_title="Nexus Tech | Customer Retention Engine",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# ===================== FUTURISTIC CSS =====================
+# CSS Styling
 st.markdown("""
 <style>
 
@@ -36,6 +36,29 @@ html, body, [class*="css"] {
 [data-testid="stSidebar"] h3 {
     color: #38bdf8;
 }
+
+/* SIDEBAR LABEL TEXT (SLIDERS, INPUTS, SELECTBOXES) */
+[data-testid="stSidebar"] label {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+/* Sidebar help / secondary text */
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span {
+    color: #d1d5db !important;
+}
+
+/* Slider min / max numbers */
+[data-testid="stSidebar"] [data-testid="stTickBar"] {
+    color: #e5e7eb !important;
+}
+
+/* Selectbox selected value */
+[data-testid="stSidebar"] div[data-baseweb="select"] {
+    color: #ffffff;
+}
+
 
 /* HEADERS */
 h1 {
@@ -148,7 +171,7 @@ h2, h3 {
 </style>
 """, unsafe_allow_html=True)
 
-# ===================== DATA LOADING =====================
+# DATA LOADING
 @st.cache_data
 def load_data():
     df = pd.read_csv("Nexus_Tech_dataset.csv")
@@ -157,7 +180,7 @@ def load_data():
 
 df = load_data()
 
-# ===================== SIDEBAR =====================
+# SIDEBAR
 st.sidebar.title("🎯 Retention Settings")
 st.sidebar.info("Adjust thresholds to define churn risk.")
 
@@ -174,7 +197,7 @@ selected_region = st.sidebar.selectbox(
     "Target Region", ["All"] + list(df["Region"].unique())
 )
 
-# ===================== PROCESSING =====================
+# PROCESSING
 def process_retention_data(data, threshold):
     current_date = data["Date"].max()
 
@@ -202,11 +225,11 @@ def process_retention_data(data, threshold):
 analysis_df = df if selected_region == "All" else df[df["Region"] == selected_region]
 processed_df = process_retention_data(analysis_df, churn_threshold)
 
-# ===================== MAIN UI =====================
+# MAIN UI
 st.title("🎯 Customer Retention & Churn Predictor")
 st.markdown(f"### Analyzing Intent Signals for **{selected_region}** Region")
 
-# ===================== KPIs =====================
+# KPIs
 total_customers = len(processed_df)
 at_risk_count = len(processed_df[processed_df["Status"] == "At Risk"])
 churn_rate = len(processed_df[processed_df["Status"] == "Churned"]) / total_customers
@@ -229,7 +252,7 @@ with c2:
 with c3:
     st.metric("📉 Churn Rate", f"{churn_rate:.1%}")
 
-# ===================== AI CONFIDENCE CARD =====================
+# AI CONFIDENCE CARD
 confidence_score = max(60, 100 - churn_rate * 100)
 
 st.markdown(f"""
@@ -246,7 +269,7 @@ st.markdown(f"""
 
 st.divider()
 
-# ===================== VISUALS =====================
+# VISUALS
 left, right = st.columns(2)
 
 with left:
@@ -283,7 +306,7 @@ with right:
     )
     st.plotly_chart(fig_scatter, use_container_width=True)
 
-# ===================== ACTION CENTER =====================
+# ACTION CENTER
 st.divider()
 st.subheader("🚀 Win-Back Action Center")
 
