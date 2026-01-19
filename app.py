@@ -324,7 +324,7 @@ action_list["Status"] = action_list["Status"].apply(badge)
 
 st.write(
     action_list[["Recency", "Frequency", "LTV", "Risk_Score", "Status"]]
-    .head(20)
+    .head(5)
     .to_html(escape=False),
     unsafe_allow_html=True
 )
