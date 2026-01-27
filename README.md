@@ -1,5 +1,7 @@
 # 🎯 Nexus Tech: Predictive Retention Engine (Enterprise Edition)
 
+[View Live demo](https://customer-retention-engine.streamlit.app)
+
 **Screenshot**
 
 ![Dashboard Screenshot](dashboard_screenshot.png)
