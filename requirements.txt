@@ -1,4 +1,5 @@
-streamlit
+streamlit>=1.30,<2.0
+altair==4.2.2
 pandas
 plotly
 numpy
